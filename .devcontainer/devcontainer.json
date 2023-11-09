@@ -1,0 +1,166 @@
+// Detalles del formato en: https://aka.ms/devcontainer.json. Para opciones de configuración, ver el README en:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.202.3/containers/docker-from-docker-compose
+{
+    "name": "POW [202415-17041]",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "pow-202415_17041",
+    "workspaceFolder": "/pow-202415_17041",
+    "remoteUser": "node",
+    // Variables de ambiente que se enlazan/montan al ambiente del Devcontainer:
+    "remoteEnv": {
+        "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+    },
+    // Variables de ambiente propias del Devcontainer. (Si se modifican debe reconstruirse el Devcontainer):
+    "containerEnv": {
+        "TZ": "America/Caracas",
+        "NODE_ENV": "development"
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "colorize.include": ["**/*.css", "**/*.scss", "**/*.postcss"],
+                "debug.javascript.autoAttachFilter": "disabled",
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "editor.formatOnSave": true,
+                "editor.formatOnSaveMode": "modifications",
+                "editor.formatOnPaste": true,
+                "editor.linkedEditing": true,
+                "editor.quickSuggestions": {
+                    "strings": true
+                },
+                "explorer.fileNesting.enabled": true,
+                "explorer.fileNesting.patterns": {
+                    ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .mailmap, .git-blame*, commitlint.config.cjs,.versionrc",
+                    ".env*": "*.env, .env.*, .envrc, env.d.ts",
+                    ".eslintrc*": ".eslintignore",
+                    ".prettierrc*": ".prettierignore, import-sorter.json",
+                    "readme*": "authors, backers*, changelog*, citation*, code_of_conduct*, codeowners, contributing*, contributors, copying, credits, governance.md, history.md, license*, maintainers, readme*, security.md, sponsors*",
+                    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, pnpm-workspace.yaml, pnpm-debug.log, .npmrc",
+                    "tsconfig.json": "tsconfig.*.json",
+                    "svelte.config.*": "playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsdoc.*, vitest.config.*, webpack.config.*, windi.config.*, sequence.mjs, vite.config.ts",
+                    "*.ts": "${capture}.js, ${capture}.d.ts.map, ${capture}.*.ts, ${capture}_*.js, ${capture}_*.ts",
+                    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+                    "*.jsx": "${capture}.js",
+                    "*.tsx": "${capture}.ts",
+                    "*.svelte": "${capture}.ts",
+                    "+layout.svelte": "+layout.ts,+layout.ts,+layout.js,+layout.server.ts,+layout.server.js",
+                    "+page.svelte": "+page.server.ts,+page.server.js,+page.ts,+page.js "
+                },
+                "files.associations": {
+                    "*.env.development": "dotenv",
+                    "*.env.production": "dotenv",
+                    "*.mdx": "markdown",
+                    "*.postcss": "tailwindcss"
+                },
+                "files.exclude": {
+                    "**/node_modules": true,
+                    "**/.pnpm-store": true,
+                    "**/.docker": true,
+                    "**/dist": true,
+                    "**/build": true,
+                    "**/.svelte-kit": true,
+                    "**/.turbo": true
+                },
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "terminal.integrated.profiles.linux": {
+                    "zsh": {
+                        "path": "/bin/zsh"
+                    }
+                },
+                "todo-tree.filtering.excludeGlobs": [
+                    "**/node_modules/*",
+                    "**/dist/*",
+                    "**/build/*",
+                    "**/.svelte-kit/*",
+                    "**/.vscode/*"
+                ],
+                "todo-tree.general.statusBar": "tags",
+                "todo-tree.general.tags": ["BUG", "HACK", "FIXME", "TODO", "NOTE"],
+                "todo-tree.general.showIconsInsteadOfTagsInStatusBar": true,
+                "todo-tree.highlights.customHighlight": {
+                    "TODO": {
+                        "type": "text-and-comment",
+                        "iconColour": "#B4E938",
+                        "background": "#B4E938",
+                        "foreground": "#000000",
+                        "icon": "tasklist",
+                        "gutterIcon": true
+                    },
+                    "FIXME": {
+                        "type": "text-and-comment",
+                        "iconColour": "#E92440",
+                        "background": "#E92440",
+                        "foreground": "#FFFFFF",
+                        "icon": "tools",
+                        "gutterIcon": true
+                    },
+                    "NOTE": {
+                        "type": "text-and-comment",
+                        "iconColour": "#eca218",
+                        "background": "#eca218",
+                        "foreground": "#000000",
+                        "icon": "note",
+                        "gutterIcon": true
+                    }
+                },
+                "todo-tree.highlights.defaultHighlight": {
+                    "type": "text-and-comment",
+                    "borderRadius": "none"
+                },
+                "todo-tree.tree.expanded": true,
+                "[svelte]": {
+                    "editor.defaultFormatter": "svelte.svelte-vscode"
+                }
+            },
+            // IDs de las extensiones que se desean instalar cuando el Devcontainer es creado:
+            "extensions": [
+                "aaron-bond.better-comments",
+                "albert.TabOut",
+                "ardenivanov.svelte-intellisense",
+                "austenc.tailwind-docs",
+                "bierner.github-markdown-preview",
+                "bradlc.vscode-tailwindcss",
+                "codezombiech.gitignore",
+                "csstools.postcss",
+                "danielgjackson.auto-dark-mode-windows",
+                "DavidAnson.vscode-markdownlint",
+                "dbaeumer.vscode-eslint",
+                "donjayamanne.githistory",
+                "eamodio.gitlens",
+                "EditorConfig.EditorConfig",
+                "esbenp.prettier-vscode",
+                "GitHub.codespaces",
+                "Gruntfuggly.todo-tree",
+                "ionutvmi.path-autocomplete",
+                "Jacano.vscode-pnpm",
+                "kamikillerto.vscode-colorize",
+                "meganrogge.template-string-converter",
+                "mikestead.dotenv",
+                "mhutchie.git-graph",
+                "ms-azuretools.vscode-docker",
+                "ms-vscode.js-debug",
+                "ms-vscode.js-debug-companion",
+                "ms-vscode.live-server",
+                "mutantdino.resourcemonitor",
+                "oderwat.indent-rainbow",
+                "ryu1kn.annotator",
+                "shyykoserhiy.git-autoconfig",
+                "stkb.rewrap",
+                "svelte.svelte-vscode",
+                "vdanchenkov.tailwind-class-sorter",
+                "vector-of-bool.gitflow",
+                "vunguyentuan.vscode-postcss",
+                "xyz.local-history",
+                "zerocrunch.commentator",
+                "Zignd.html-css-class-completion"
+            ]
+        }
+    },
+    "forwardPorts": [5173],
+    "portsAttributes": {
+        "5173": {
+            "label": "SvelteKit",
+            "onAutoForward": "silent"
+        }
+    }
+}

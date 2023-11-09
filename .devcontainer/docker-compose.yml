@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+    pow-202415_17041:
+        container_name: pow-202415_17041-container
+        hostname: pow-202415_17041.dev
+        user: node
+        init: true
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                # Actualiza VARIANT escogiendo un valor de Node.js LTS: 14, 16, 18...
+                # Agregar -bullseye o -buster para escoger una versión del OS específica.
+                # Usar las variantes -bullseye en equipos con arquitectura arm64/Apple Silicon
+                VARIANT: 20-bullseye
+                PNPM_VERSION: 8.10.0
+        volumes:
+            # Redirecciona el socket del Docker local al contenedor
+            - /var/run/docker.sock:/var/run/docker-host.sock
+            # Se usa un volumen con nombre para el código fuente
+            - ..:/pow-202415_17041:cached
+            # Persiste las extensiones de VS Code entre las reconstrucciones del devcontainer
+            - vscode-extensions:/root/.vscode-server/extensions
+            # Persiste también las extensiones de VS Code Insiders
+            - vscode-extensions-insiders:/root/.vscode-server-insiders/extensions
+        networks:
+            - pow-202415_17041-net
+        entrypoint: /usr/local/share/docker-init.sh
+        # Se sobreescribe el comando predeterminado, así el contenedor no se "apaga" cuando finalice el proceso
+        command: sleep infinity
+
+volumes:
+    vscode-extensions:
+        name: pow-202415_17041-vscode-extensions
+    vscode-extensions-insiders:
+        name: pow-202415_17041-vscode-insiders-extensions
+
+networks:
+    pow-202415_17041-net:
