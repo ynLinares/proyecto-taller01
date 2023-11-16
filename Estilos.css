@@ -86,6 +86,8 @@ header {
   /*Borde redondeado*/
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px;
   /*Sombra*/
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px inset;
+  /*Sombra*/
 }
 
 .pin {
