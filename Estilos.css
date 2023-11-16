@@ -31,12 +31,19 @@ div {
   /*Ancho*/
   border-color: black;
   /*Color del borde*/
+   border-radius: 4px;
+  /*Borde redondeado*/
 }
 div.jugadores {
   width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+
+}
+image{
+  border-radius: 4px;
+  /*Borde redondeado*/
 }
 
 header {
