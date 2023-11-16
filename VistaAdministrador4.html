@@ -1,60 +1,88 @@
 <!DOCTYPE html>
 <!--Documento html-->
 <html lang="en">
-<!--Lenguaje-->
+  <!--Lenguaje-->
 
-<head>
+  <head>
     <!--Encabezado-->
-    <link rel="stylesheet" href="Estilos.css">
+    <link rel="stylesheet" href="Estilos.css" />
     <!--Estilos-->
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <!--Codificacion-->
     <title>Inicio de sesión</title>
     <!--Titulo-->
-</head>
+  </head>
 
-<body class="centro">
+  <body class="centro">
     <!--Cuerpo-->
-    <div class="cuadro" style="background-color: transparent;">
-        <div class="centro" style="flex-direction: row;">
-            <div class="cuadro" style="width: 30%;">
-                <h2>Pin</h2>
-                <h1>#########</h1>
-            </div>
-            <div style="width: 18%;">
-                <img src="ImagenesProyecto/2.png" alt="supaer chevere " width="100%" height="100%">
-            </div>
+    <div class="cuadro"
+          style="background-color: transparent">
+      <!--Divisor - contenedor de todos los elementos -->
+      <div class="centro" style="flex-direction: row">
+        <!--Div contenedor pin Codigo qr-->
+        <div class="cuadro" style="width: 30%">
+          <!--Cuadro Pin-->
+          <h2>Pin</h2>
+          <h1>#########</h1>
         </div>
-
-        <div class="centro" style="flex-direction: row;">
-            <div>
-                <button class="botton" style="margin: 0px;">¡Iniciar!</button>
-            </div>
-            <div>
-                <img src="ImagenesProyecto/2.png" alt="supaer chevere " width="10%" height="10%">
-            </div>
+          <!--Futturo Codigo QR-->
+          <img  src="ImagenesProyecto/2.png"
+                alt="super chevere "
+                width="10%"
+                height="10%" >
         </div>
+      </div>
+      <div  class="centro"
+            style="flex-direction: row " >
+        <!--Div Boton inicar  Bloqueo de jugador -->
+        <button   class="botton"
+                  style="margin: 0px; width:35%">
+        <!--Boton de iniciar-->
+          ¡Iniciar!
+        </button>
+                <button class="botton"
+        style="margin: 0px; width:10%">
+        <!--Boton de candado -->
+          <img src="imagen.png" alt="Imagen">
+        </button>
 
-        <div
-            style="display: flex; justify-content: center; align-items: flex-end; display: flex; justify-content: space-between;max-width: none;border: none;">
-            <div style="width: 100px; height: 100px; display: flex; justify-content: space-between; border: none;">
-                <img src="ImagenesProyecto/4.png" alt="supaer chevere " width="100%" height="100%"
-                    style="background-color: aquamarine;">
-                <div>
-                    <h2>jugador 1 </h2>
-                </div>
-            </div>
-            <div style="width: 100px; height: 100px;display: flex; justify-content:end;border: none;">
-                <img src="ImagenesProyecto/5.png" alt="supaer chevere " width="100%" height="100%"
-                    style="background-color: aquamarine;">
-                <div>
-                    <h2>jugador 2</h2>
-                </div>
-            </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          display: flex;
+          justify-content: space-between;
+          max-width: none;
+          border: none;
+        "
+      >
+        <div style="width: 100px; height: 100px; display: flex; justify-content: space-between; border: none">
+          <img
+            src="ImagenesProyecto/4.png"
+            alt="supaer chevere "
+            width="100%"
+            height="100%"
+            style="background-color: aquamarine"
+          />
+          <div>
+            <h2>jugador 1</h2>
+          </div>
         </div>
-
+        <div style="width: 100px; height: 100px; display: flex; justify-content: end; border: none">
+          <img
+            src="ImagenesProyecto/5.png"
+            alt="supaer chevere "
+            width="100%"
+            height="100%"
+            style="background-color: aquamarine"
+          />
+          <div>
+            <h2>jugador 2</h2>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-
-</body>
+  </body>
+</html>
