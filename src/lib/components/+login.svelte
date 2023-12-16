@@ -1,0 +1,52 @@
+<script>
+  import { createEventDispatcher } from "svelte";
+  import "$lib/assets/Estilos.css";
+  const dispatch = createEventDispatcher();
+
+  let nombre = "";
+  let pin = "";
+
+  function datos() {
+    dispatch("submit", { nombre, pin });
+  }
+</script>
+
+<style>
+  .centro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cuadro {
+    width: 50%;
+  }
+
+  .pin {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+  }
+
+  .botton {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+  }
+</style>
+
+<div class="centro">
+  <img src="/ImagenesProyecto/Kahoot_Logo.svg.png" alt="Imagen1" style="background-color: transparent; width: 252px;"/>
+  <div class="cuadro">
+    <input type="text" class="pin" placeholder="Nombre de Usuario" bind:value={nombre} required />
+    <input type="text" class="pin" placeholder="Pin" bind:value={pin} required />
+    <button class="botton" on:click={datos}>Ingresar</button>
+  </div>
+</div>
