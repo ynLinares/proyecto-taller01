@@ -1,0 +1,153 @@
+body {
+  /*Cuerpo*/
+  background-color: blueviolet;
+  /*Color de fondo*/
+  background-image: url("ImagenesProyecto/images.jpg");
+  /*Imagen de fondo*/
+  background-size: cover;
+  /*Tamaño de la imagen*/
+  width: 96%;
+  /*Ancho*/
+  height: 96vh;
+  /*Alto*/
+  display: flex;
+  /*Mostrar*/
+  justify-content: center;
+  /*Justificar*/
+  align-items: center;
+  /*Alinear*/
+}
+
+body.sensillo {
+  justify-content: start;
+  /*Justificar*/
+  gap: 200px;
+  /*Alinear*/
+}
+
+div {
+  /*Div*/
+  width: 100%;
+  /*Ancho*/
+  border-color: black;
+  /*Color del borde*/
+   border-radius: 4px;
+  /*Borde redondeado*/
+}
+div.jugadores {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+}
+image{
+  border-radius: 4px;
+  /*Borde redondeado*/
+}
+
+header {
+  /*Encabezado*/
+  color: aliceblue;
+  /*Color del texto*/
+  background-color: black;
+  /*Color de fondo*/
+  border: 1px solid black;
+  /*Borde*/
+  width: 100%;
+  /*Ancho*/
+  height: 7%;
+  /*Alto*/
+  border-radius: 4px;
+  /*Borde redondeado*/
+  height: auto;
+  /*Alto automático*/
+}
+
+.centro {
+  /*Centro*/
+  display: flex;
+  /*Mostrar*/
+  flex-direction: column;
+  /*Dirección Comunnas*/
+  justify-content: center;
+  /*Justificar contenido en el centro */
+  align-items: center;
+  /*Alinear contenido en el centro */
+}
+
+.cuadro {
+  /*Cuadro*/
+  background-color: rgb(255, 255, 255);
+  /*Color de fondo*/
+  padding: 16px;
+  /*Relleno*/
+  border-radius: 4px;
+  /*Borde redondeado*/
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px;
+  /*Sombra*/
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px inset;
+  /*Sombra*/
+}
+
+.pin {
+  /*Pin*/
+  min-height: 2.375rem;
+  /*Altura mínima*/
+  text-align: center;
+  /*Alinear texto en el centro */
+  color: rgb(51, 51, 51);
+  /*Color del texto*/
+  font-size: 1rem;
+  /*Tamaño de la fuente*/
+  border-radius: 4px;
+  /*Borde redondeado*/
+  box-sizing: border-box;
+  /*Caja de borde*/
+  width: 100%;
+  /*Ancho*/
+  margin-top: 4%;
+  /*Margen superior*/
+  box-shadow: rgba(0, 0, 0, 0.25) 0px -4px inset;
+  /*Sombra*/
+}
+
+.botton {
+  /*Botón*/
+  width: 100%;
+  /*Ancho*/
+  margin-top: 43px;
+  /*Margen superior*/
+  cursor: pointer;
+  /*Cursor*/
+  box-shadow: rgba(0, 0, 0, 0.25) 0px -4px inset;
+  /*Sombra*/
+  background: rgb(51, 51, 51);
+  /*Color de fondo*/
+  color: rgb(255, 255, 255);
+  /*Color del texto*/
+  border-radius: 4px;
+  /*Borde redondeado*/
+  font-size: 0.875rem;
+  /*Tamaño de la fuente*/
+  font-weight: bold;
+  /*Peso de la fuente*/
+  text-align: center;
+  /*Alinear texto en el centro */
+  min-height: 48px;
+  /*Altura mínima*/
+}
+.circulo {
+  /*Circulo*/
+  border-radius: 50px;
+  /*Borde redondeado*/
+  background-color: blue;
+  /*Color de fondo*/
+  text-align: center;
+  /*Alinear texto en el centro */
+  width: 100px;
+  /*Ancho*/
+  height: 100px;
+  /*Alto*/
+  border: 3px solid black;
+}
