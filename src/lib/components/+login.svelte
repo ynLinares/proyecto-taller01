@@ -1,16 +1,19 @@
 <script>
-
-	import { createEventDispatcher } from "svelte";
+	import { createEventDispatcher } from 'svelte';
 	import '$lib/assets/Estilos.css';
-	import { goto } from "$app/navigation";
+	import { goto } from '$app/navigation';
+	import Page from '../../routes/+page.svelte';
 	const dispatch = createEventDispatcher();
 
 	let nombre = '';
 	let pin = '';
 
 	function handleSubmit() {
+		goto("/src/routes/+page.svelte");
 		dispatch('submit', { nombre, pin });
-		
+		return {
+			handleSubmit
+		};
 	}
 </script>
 
@@ -23,13 +26,14 @@
 	<div class="cuadro">
 		<form on:submit={handleSubmit}>
 			<input
+				name="nombre"
 				type="text"
 				class="pin"
 				placeholder="Nombre de Usuario"
 				bind:value={nombre}
 				required
 			/>
-			<input type="text" class="pin" placeholder="Pin" bind:value={pin} required />
+			<input name="pin" type="text" class="pin" placeholder="Pin" bind:value={pin} required />
 			<button class="botton">Ingresar</button>
 		</form>
 	</div>
