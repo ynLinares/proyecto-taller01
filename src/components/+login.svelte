@@ -1,19 +1,15 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import '$lib/assets/Estilos.css';
-	import { goto } from '$app/navigation';
-	import Page from '../../routes/+page.svelte';
+	const ruta = "+newQuiz.svelte"
+
 	const dispatch = createEventDispatcher();
 
 	let nombre = '';
 	let pin = '';
 
 	function handleSubmit() {
-		goto("/src/routes/+page.svelte");
-		dispatch('submit', { nombre, pin });
-		return {
-			handleSubmit
-		};
+		dispatch('submit', { nombre, pin } );
 	}
 </script>
 
