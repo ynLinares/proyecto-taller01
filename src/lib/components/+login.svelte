@@ -1,21 +1,14 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
 	import '$lib/assets/Estilos.css';
-	const ruta = "+newQuiz.svelte"
 
-	const dispatch = createEventDispatcher();
-
-	let nombre = '';
-	let pin = '';
-
-	function handleSubmit() {
-		dispatch('submit', { nombre, pin } );
-	}
+	export let nombre = '';
+	export let pin = '';
+	function handleSubmit() {}
 </script>
 
 <div class="centro">
 	<img
-		src="/ImagenesProyecto/Kahoot_Logo.svg.png"
+		src="ImagenesProyecto/Kahoot.png"
 		alt="Imagen1"
 		style="background-color: transparent; width: 252px;"
 	/>
