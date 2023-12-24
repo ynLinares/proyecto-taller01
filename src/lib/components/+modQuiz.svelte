@@ -1,0 +1,63 @@
+<script>
+	import '$lib/assets/Estilos.css';
+</script>
+
+<header style="display: inline-flex; justify-content: space-between;">
+  <h1>Quiz XYz</h1>
+  <img src="ImagenesProyecto/585e4beacb11b227491c3399.png" alt="supaer chevere " width="8%" height="100%" style="background-color: black;">
+</header>
+
+<div style="display: flex;">
+  <div>
+    <main class="centro" style="width: 100%;">
+      <div>
+        <h1 class="cuadro">Pregunta 1</h1>
+      </div>
+    </main>
+
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <div class="cuadro" style="display: flex; padding: 1px;">
+          <img src="ImagenesProyecto/2.png" alt="supaer chevere " width="111px" height="111px" style="background-color: aquamarine;">
+          <h2>Respuesta 1</h2>
+        </div>
+        <div class="cuadro" style="display: flex; padding: 1px;">
+          <img src="ImagenesProyecto/2.png" alt="supaer chevere " width="111px" height="111px" style="background-color: aquamarine;">
+          <h2>Respuesta 1</h2>
+        </div>
+      </div>
+      <div>
+        <div class="cuadro" style="display: flex; padding: 1px;">
+          <img src="ImagenesProyecto/2.png" alt="supaer chevere " width="111px" height="111px" style="background-color: aquamarine;">
+          <h2>Respuesta 1</h2>
+        </div>
+        <div class="cuadro" style="display: flex; padding: 1px;">
+          <img src="ImagenesProyecto/2.png" alt="supaer chevere " width="111px" height="111px" style="background-color: aquamarine;">
+          <h2>Respuesta 1</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="width: 25%; max-width: none;">
+    <h2>Temas</h2>
+    <div class="grid-container">
+      <img src="ImagenesProyecto/2.png" alt="supaer chevere " width="30px" height="30px" style="background-color: aquamarine;">
+      <img src="ImagenesProyecto/2.png" alt="supaer chevere " width="30px" height="30px" style="background-color: aquamarine;">
+      <img src="ImagenesProyecto/2.png" alt="supaer chevere " width="30px" height="30px" style="background-color: aquamarine;">
+      <img src="ImagenesProyecto/2.png" alt="supaer chevere " width="30px" height="30px" style="background-color: aquamarine;">
+      <img src="ImagenesProyecto/2.png" alt="supaer chevere " width="30px" height="30px" style="background-color: aquamarine;">
+    </div>
+
+    <h3>Limite de tiempo</h3>
+    <select class="botton" style="margin: 0px;">
+      <option value="1">30 segundos</option>
+      <option value="2">40 segundos</option>
+      <option value="3">60 segundos</option>
+    </select>
+
+    <button class="botton">Agregar pregunta</button>
+    <button class="botton">Crear</button>
+  </div>
+</div>
+
