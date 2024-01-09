@@ -1,3 +1,4 @@
+
 <script>
 	import Login from '../lib/components/+login.svelte';
 	import NewQuiz from '../lib/components/+newQuiz.svelte';
@@ -23,9 +24,9 @@
 </script>
 
 <div>
-	{#if nombre != '' && pin != ''}
-		<NewQuiz></NewQuiz>
-	{:else if nombre == '' && pin == ''}
-		<Login></Login>
-	{/if}
+
+<CreQuiz>
+
+</CreQuiz>
+
 </div>
