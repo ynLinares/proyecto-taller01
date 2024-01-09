@@ -1,17 +1,10 @@
 <script>
-import '$lib/assets/Estilos.css';
+    import Head from "./+head.svelte";
+    import Titulo from "./+titulo.svelte";
 </script>
 
-<header>
-  <h1 style="color: aliceblue;">Pin ######### | Quiz</h1>
-</header>
-
-<main class="centro" style="width: 100%;">
-  <div class="cuadro" style="width: 97%; height: 70%;">
-    <h1 style="text-align: center;">Pregunta 1</h1>
-  </div>
-</main>
-
+<Head titulo = "Pin ######### | Quiz"></Head>
+<Titulo tituloChiquito = "Pregunta 1"/>
 <div style="display: flex; width: 99%; justify-content: space-between;">
   <div class="circulo">
     <p style="text-align: center;">Tiempo</p>
