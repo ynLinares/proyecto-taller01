@@ -1,21 +1,20 @@
-// In a real app, this data would live in a database,
-// rather than in memory. But for now, we cheat.
-
-// Manejo de la base de datos 
+// Manejo de la base de datos
 const db = new Map();
 
 /**
  * @param {any} userid
  */
+
 export function getTodos(userid) {
 	if (!db.get(userid)) {
-		db.set(userid, [{
-			id: crypto.randomUUID(),
-			description: 'Learn SvelteKit',
-			done: false
-		}]);
+		db.set(userid, [
+			{
+				id: crypto.randomUUID(),
+				description: 'Learn SvelteKit',
+				done: false
+			}
+		]);
 	}
-
 	return db.get(userid);
 }
 
@@ -24,8 +23,7 @@ export function getTodos(userid) {
  * @param {any} description
  */
 export function createTodo(userid, description) {
-	
-	// validacion 
+	// validacion
 	if (description === '') {
 		throw new Error('todo must have a description');
 	}
@@ -33,7 +31,9 @@ export function createTodo(userid, description) {
 	const todos = db.get(userid);
 
 	// validacion
-	if (todos.find((/** @type {{ description: any; }} */ todo) => todo.description === description)) {
+	if (
+		todos.find((/** @type {{ description: any; }} */ todo) => todo.description === description)
+	) {
 		throw new Error('todos must be unique');
 	}
 
@@ -56,4 +56,3 @@ export function deleteTodo(userid, todoid) {
 		todos.splice(index, 1);
 	}
 }
-

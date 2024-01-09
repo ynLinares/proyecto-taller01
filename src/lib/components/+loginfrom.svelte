@@ -1,13 +1,12 @@
 <script>
-	export let nombre = '';
-	export let pin = '';
-	function handleSubmit() {
-
-    }
+	let nombre = '';
+	let pin = '';
 </script>
 
 	<div class="cuadro">
-		<form on:submit={handleSubmit}>
+		<form
+            method="post"
+            action="?/create"    >
 			<input
 				name="nombre"
 				type="text"
