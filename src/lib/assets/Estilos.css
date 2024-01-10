@@ -112,6 +112,7 @@ header {
   /*Sombra*/
 }
 
+
 .botton {
   /*Botón*/
   width: 100%;
@@ -150,4 +151,24 @@ header {
   height: 100px;
   /*Alto*/
   border: 3px solid black;
+  /*Centrar contenido verticalmente*/
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px; /* Agregar padding para evitar que el input toque el borde */
 }
+
+.circulo input {
+  /*Color de fondo del input igual al del círculo*/
+  background-color: blue;
+  /*Color del texto blanco para contraste*/
+  color: white;
+  /*Centrar texto en el input*/
+  text-align: center;
+  /*Eliminar bordes del input*/
+  border: none;
+  /*Asegurarse de que el input no se salga del tamaño del círculo*/
+  max-width: 50%;
+}
+
+

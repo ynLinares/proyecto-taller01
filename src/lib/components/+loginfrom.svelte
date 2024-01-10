@@ -1,6 +1,7 @@
 <script>
-	export let nombre = '';
-	export let pin = '';
+// @ts-nocheck
+	let nombre;
+	let pin;
 </script>
 
 	<div class="cuadro">
@@ -32,6 +33,7 @@
 		padding: 10px;
 		border: 1px solid #000;
 		border-radius: 5px;
+        color: #000;
 	}
 
 	.botton {
