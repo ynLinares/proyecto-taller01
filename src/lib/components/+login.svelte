@@ -1,8 +1,8 @@
 <script>
     import ImgeKahoot from './+imgeKahoot!.svelte';
     import Loginfrom from './+loginfrom.svelte';
-	export let nombre = '';
-	export let pin = '';
+	export let nombre = " ";
+	export let pin = " ";
 
 </script>
 

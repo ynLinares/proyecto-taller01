@@ -1,12 +1,13 @@
 <script>
-	let nombre = '';
-	let pin = '';
+	export let nombre = '';
+	export let pin = '';
 </script>
 
 	<div class="cuadro">
+        <!-- cambiar el metodo a post para la validacion  -->
 		<form
-            method="post"
-            action="?/create"    >
+            method="get "
+            action="/teacher"    >
 			<input
 				name="nombre"
 				type="text"
