@@ -5,6 +5,7 @@
 	import ImageTema from '../comambos/+imageTema.svelte';
     import Button from '../comambos/+button.svelte';
 
+    // agregar condicional si no se tiene pregunas guardadas
     export let titulopregunta = 'pregunta 1 ';
 	export let nombreQuiz = 'Quiz xyz';
 	export let respuestas = ['Respuesta 1', 'Respuesta 2', 'Respuesta 3', 'Respuesta 4'];

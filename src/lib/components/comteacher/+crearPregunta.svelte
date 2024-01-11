@@ -1,6 +1,8 @@
 <script>
 	// @ts-nocheck
 
+	import Button from "../comambos/+button.svelte";
+
 	let pregunta = '';
 	let tiempo = '';
 	let respuestaCorrecta = '';
@@ -73,6 +75,10 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- agrear funcion -->
+    <Button nombre ="Crear" url ="/teacher/crearQuiz"></Button>
+
 </from>
 
 <style>

@@ -9,7 +9,7 @@
 		<div style="display: flex">
 			<div style="width: 25%;">
 				<h2>{nombre}</h2>
-                <Button nombre="Iniciar" />
+                <Button nombre="Iniciar" url ="/teacher/room" />
 			</div>
 			<div style="background-color: black; width: 10px"></div>
 			<div>
