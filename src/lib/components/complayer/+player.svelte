@@ -1,12 +1,17 @@
 <script>
- import '$lib/assets/Estilos.css';
+	import Button from "../comambos/+button.svelte";
+
+    export let nombre="Nombre del jugador ";
+
 </script>
 
 <main class="centro" style="border-color: rebeccapurple;">
   <div class="alinea">
-    <img src="ImagenesProyecto/2.png" alt="Imagen1" style="background-color: transparent;">
+    <!-- Componenete donde cambiar la imagen del jugador  -->
+    <img src="/ImagenesProyecto/2.png" alt="Imagen1" style="background-color: transparent;">
   </div>
   <h1 style="margin: 0px; font-size: 2.5rem; font-family: inherit; line-height: normal; color: rgb(255, 255, 255); font-weight: bold;">
-    Nombre del jugador
+    {nombre}
   </h1>
+  <Button nombre =" Listo" url =" "></Button>
 </main>

@@ -1,6 +1,3 @@
-<script>
- import '$lib/assets/Estilos.css';
-</script>
 
 <main class="centro" style="width: 100%;">
   <main class="centro" style="width: 100%;">

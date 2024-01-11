@@ -1,49 +1,26 @@
 <script>
-	import '$lib/assets/Estilos.css';
+	import ImagePlayer from '../comambos/+imagePlayer.svelte';
+	import Imagep from '../comambos/+imagep.svelte';
+	export let nombre = ' nombre';
+    export let players = [
+        "geraldine",
+        "aquiles",
+        "cesario",
+        "luci",
+        "jesus",
+        "severus"
+    ]
 </script>
 
 <main class="centro" style="width: 100%; border: 5px solid midnightblue; gap: 28px">
-	<div style="text-align-last: center;">
-		<img src="ImagenesProyecto/2.png" alt="supaer chevere" />
+	<div class="centro" >
+		<ImagePlayer {nombre} />
 	</div>
-	<div style="display: flex; justify-content: center; align-items: flex-start; max-width: none">
-		<div style="width: 100px; height: 100px">
-			<img
-				src="ImagenesProyecto/2.png"
-				alt="supaer chevere"
-				width="100%"
-				height="100%"
-				style="border: 3px solid midnightblue; background-color: cornsilk; padding: 8px"
-			/>
-		</div>
-		<div style="width: 100px; height: 100px">
-			<img
-				src="ImagenesProyecto/3.png"
-				alt="supaer chevere"
-				width="100%"
-				height="100%"
-				style="border: 3px solid midnightblue; background-color: red; padding: 8px"
-			/>
-		</div>
-		<div style="width: 100px; height: 100px">
-			<img
-				src="ImagenesProyecto/4.png"
-				alt="supaer chevere"
-				width="100%"
-				height="100%"
-				style="border: 3px solid midnightblue; background-color: red; padding: 8px"
-			/>
-		</div>
-		<div style="width: 100px; height: 100px">
-			<img
-				src="ImagenesProyecto/5.png"
-				alt="supaer chevere"
-				width="100%"
-				height="100%"
-				style="border: 3px solid midnightblue; background-color: red; padding: 8px"
-			/>
-		</div>
-	</div>
+<div class="grid-container">
+	{#each players as name}
+		<ImagePlayer nombre={name} />
+	{/each}
+</div>
 	<div style="background-color: aliceblue; border: 3px solid midnightblue">
 		<h1>Listo</h1>
 	</div>

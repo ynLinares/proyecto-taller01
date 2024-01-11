@@ -17,8 +17,19 @@
 				bind:value={nombre}
 				required
 			/>
+			<input name="pin" type="text" class="pin" placeholder="Pin" bind:value={pin} required />
+		{:else if action == '/player'}
+			<input name="pin" type="text" class="pin" placeholder="Pin" bind:value={pin} required />
+		{:else if action == '/player/usuario'}
+			<input
+				name="nombre"
+				type="text"
+				class="pin"
+				placeholder="Nombre de Usuario"
+				bind:value={nombre}
+				required
+			/>
 		{/if}
-		<input name="pin" type="text" class="pin" placeholder="Pin" bind:value={pin} required />
 
 		<button class="botton">Ingresar</button>
 	</form>
