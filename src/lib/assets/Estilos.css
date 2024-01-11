@@ -2,7 +2,7 @@ body {
 	/*Cuerpo*/
 	background-color: blueviolet;
 	/*Color de fondo*/
-	background-image: url('ImagenesProyecto/images.jpg');
+	background-image: url('/ImagenesProyecto/images.jpg');
 	/*Imagen de fondo*/
 	background-size: cover;
 	/*Tamaño de la imagen*/

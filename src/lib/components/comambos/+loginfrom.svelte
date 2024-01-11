@@ -1,14 +1,14 @@
 <script>
-// @ts-nocheck
+	// @ts-nocheck
 	let nombre;
 	let pin;
+	export let action = '';
 </script>
 
-	<div class="cuadro">
-        <!-- cambiar el metodo a post para la validacion  -->
-		<form
-            method="get "
-            action="/teacher"    >
+<div class="cuadro">
+	<!-- cambiar el metodo a post para la validacion  -->
+	<form method="get " {action}>
+		{#if action === '/teacher'}
 			<input
 				name="nombre"
 				type="text"
@@ -17,13 +17,14 @@
 				bind:value={nombre}
 				required
 			/>
-			<input name="pin" type="text" class="pin" placeholder="Pin" bind:value={pin} required />
-			<button class="botton">Ingresar</button>
-		</form>
-	</div>
+		{/if}
+		<input name="pin" type="text" class="pin" placeholder="Pin" bind:value={pin} required />
+
+		<button class="botton">Ingresar</button>
+	</form>
+</div>
 
 <style>
-
 	.cuadro {
 		width: 50%;
 	}
@@ -33,7 +34,7 @@
 		padding: 10px;
 		border: 1px solid #000;
 		border-radius: 5px;
-        color: #000;
+		color: #000;
 	}
 
 	.botton {
