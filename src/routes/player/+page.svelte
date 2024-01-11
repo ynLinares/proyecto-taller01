@@ -12,8 +12,6 @@
 	import HitUsu from '$lib/components/complayer/+hitUsu.svelte';
     // listo
 	import LoadinQuiz from '$lib/components/complayer/+loadinQuiz.svelte';
-    // listo
-	import MisUsu from '$lib/components/complayer/+misUsu.svelte';
 
 </script>
 
