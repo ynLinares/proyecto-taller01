@@ -11,6 +11,6 @@
 	<QuizReady nombre="Quiz1" preguntas={preguntasQuiz} />
 	<QuizReady nombre="Quiz2" preguntas={preguntasQuiz} />
 	<div style = "width: 25%;">
-		<Button nombre="Crear Quiz (+)" url="/teacher/Crear_Quiz" />
+		<Button nombre="Crear Quiz (+)" url="/teacher/crearQuiz" />
 	</div>
 </div>
