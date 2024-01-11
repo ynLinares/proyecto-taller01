@@ -1,7 +1,5 @@
 <script>
-    import ListQuiz from "$lib/components/+listQuiz.svelte";
+    import ListQuiz from "$lib/components/comteacher/+listQuiz.svelte";
 </script>
 
-<ListQuiz>
-
-</ListQuiz>
+<ListQuiz />
