@@ -1,37 +1,53 @@
 <script>
-	// @ts-nocheck
-	let nombre;
-	let pin;
-	export let action = '';
+	import { enhance } from '$app/forms';
+    export const admin =true;
+
+	let username = '';
+	let password = '';
+      import { goto } from '$app/navigation';
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    const response = await fetch('?/login', {
+      method: 'POST',
+      body: formData,
+
+    });
+ console.log(response)
+    const data = await response.json();
+    console.log(data);
+    if (data.type==='success') {
+      goto('/teacher');
+    } else {
+      // Manejar el error de inicio de sesión...
+      console.log("nofunciona");
+    }
+  }
 </script>
 
 <div class="cuadro">
-	<!-- cambiar el metodo a post para la validacion  -->
-	<form method="get " {action}>
-		{#if action === '/teacher'}
-			<input
-				name="nombre"
-				type="text"
-				class="pin"
-				placeholder="Nombre de Usuario"
-				bind:value={nombre}
-				required
-			/>
-			<input name="pin" type="text" class="pin" placeholder="Pin" bind:value={pin} required />
-		{:else if action == '/player'}
-			<input name="pin" type="text" class="pin" placeholder="Pin" bind:value={pin} required />
-		{:else if action == '/player/usuario'}
-			<input
-				name="nombre"
-				type="text"
-				class="pin"
-				placeholder="Nombre de Usuario"
-				bind:value={nombre}
-				required
-			/>
-		{/if}
-
-		<button class="botton">Ingresar</button>
+	<form on:submit={handleSubmit} method="POST" action="?/login" use:enhance>
+		<input
+			name="name"
+			id="name"
+			type="text"
+			class="pin"
+			placeholder="Nombre de Usuario"
+			autocomplete="off"
+			required
+		/>
+		<input
+			name="password"
+			id="password"
+			type="password"
+			class="pin"
+			placeholder="Password"
+			required
+		/>
+		<button class="botton" type="submit">Ingresar</button>
 	</form>
 </div>
 

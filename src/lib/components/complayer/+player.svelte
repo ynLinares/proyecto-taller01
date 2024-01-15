@@ -15,6 +15,4 @@
 		</h1>
         	<Button nombre=" Listo" url="/player/loby"></Button>
 	</div>
-
-
 </main>

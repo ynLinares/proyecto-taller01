@@ -1,10 +1,10 @@
 <script>
 	import ImgeKahoot from './+imgeKahoot!.svelte';
 	import Loginfrom from './+loginfrom.svelte';
-	export let src = '';
+	export let admin = true;
 </script>
 
 <div class="centro">
 	<ImgeKahoot />
-	<Loginfrom action={src}/>
+	<Loginfrom {admin} />
 </div>
