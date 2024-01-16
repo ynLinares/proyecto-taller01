@@ -2,16 +2,15 @@
 	import { enhance } from '$app/forms';
 
 	let name = '';
-	let password = '';
 	let pin = '';
 
 	async function handleSubmit() {
-		const response = await fetch('?/login', {
+		const response = await fetch('?/loginPlayer', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
-			body: new URLSearchParams({ name, password })
+			body: new URLSearchParams({ name, pin })
 		});
 		console.log('Response:', response);
 		const responseData = await response.json();
@@ -35,26 +34,27 @@
 	}
 </script>
 
-<div class="cuadro">
-	<form method="POST" action="?/login" use:enhance on:submit={handleSubmit}>
+<div class ="cuadro">
+	<form method="POST" action="?/loginPlayer" use:enhance on:submit={handleSubmit}>
+		<input
+			name="pin"
+			id="pin"
+			type="text"
+			class="pin"
+			placeholder="Pin"
+            autocomplete="off"
+			required
+			bind:value={pin}
+		/>
 		<input
 			name="name"
 			id="name"
 			type="text"
 			class="pin"
-			placeholder="Nombre"
+			placeholder="Nombre de Usuario"
 			autocomplete="off"
 			required
 			bind:value={name}
-		/>
-		<input
-			name="password"
-			id="password"
-			type="password"
-			class="pin"
-			placeholder="Password"
-			required
-			bind:value={password}
 		/>
 		<button class="botton" type="submit">Ingresar</button>
 	</form>

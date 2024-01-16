@@ -2,8 +2,9 @@ export let users = [
 	{
 		type: 'admin',
 		name: 'Admin',
-		pin: '1234',
-		password: '123'
+		pin: '123',
+		password: '123',
+		canAddPlayers: true
 	},
 	{
 		type: 'player',
@@ -13,7 +14,8 @@ export let users = [
 		type: 'admin',
 		name: 'Admin2',
 		pin: '5678',
-		password: 'password2'
+		password: 'password2',
+		canAddPlayers: true
 	},
 	{
 		type: 'player',
@@ -21,6 +23,19 @@ export let users = [
 	}
 	// Agrega más usuarios según sea necesario...
 ];
+function addPlayer(name) {
+	// Crea un nuevo objeto de jugador
+	const newPlayer = {
+		type: 'player',
+		name: name
+	};
+
+	// Agrega el nuevo jugador al arreglo de usuarios
+	users.push(newPlayer);
+
+	// Devuelve el nuevo jugador
+	return newPlayer;
+}
 export function getAllUsers() {
 	return users;
 }
@@ -40,5 +55,35 @@ export function adminLogin(name, password) {
 		throw new Error('Contraseña incorrecta');
 	}
 	console.log('data.js funciona ');
+	return true;
+}
+
+export function validateAdminPin(pin) {
+	// Busca al administrador con el PIN proporcionado en el arreglo de usuarios
+	const user = users.find((user) => user.type === 'admin' && user.pin === pin);
+
+	// Si no se encontró al administrador, devuelve null
+	if (!user) {
+		return null;
+	}
+	// Devuelve el objeto del usuario
+	return user;
+}
+export function playerLogin(adminPin, player) {
+	// Valida el PIN del administrador
+	const user = validateAdminPin(adminPin);
+	if (!user) {
+		throw new Error('PIN de administrador inválido');
+	}
+
+	// Verifica si el administrador puede agregar jugadores
+	if (!user.canAddPlayers) {
+		throw new Error('Este administrador no puede agregar jugadores');
+	}
+
+	// Agrega el jugador a la base de datos
+	addPlayer(player);
+
+	console.log('playerLogin funciona');
 	return true;
 }

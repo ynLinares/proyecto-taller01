@@ -1,10 +1,17 @@
 <script>
 	import ImgeKahoot from './+imgeKahoot!.svelte';
 	import Loginfrom from './+loginfrom.svelte';
+	import Loginfromplayer from './+loginfromplayer.svelte';
 	export let admin = true;
 </script>
 
 <div class="centro">
 	<ImgeKahoot />
-	<Loginfrom {admin} />
+    {#if admin}
+        <Loginfrom />
+    {/if}
+    {#if !admin}
+        <Loginfromplayer/>
+    {/if}
+
 </div>

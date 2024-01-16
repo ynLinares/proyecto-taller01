@@ -1,8 +1,5 @@
 <script>
-	import NameUsu from '$lib/components/complayer/+nameUsu.svelte';
+	import Player from "$lib/components/complayer/+player.svelte";
 </script>
 
-<div class=" centro">
-	<NameUsu />
-
-</div>
+<Player />
