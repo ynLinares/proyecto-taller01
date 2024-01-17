@@ -85,5 +85,5 @@ export function playerLogin(adminPin, player) {
 	addPlayer(player);
 
 	console.log('playerLogin funciona');
-	return true;
+	return addPlayer(player);
 }

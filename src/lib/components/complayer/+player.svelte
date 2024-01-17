@@ -1,7 +1,11 @@
 <script>
+    let name="";
 	import Button from '../comambos/+button.svelte';
-
-	export let nombre = 'Nombre del jugador ';
+    if (typeof window !== 'undefined') {
+        name = JSON.parse(window.localStorage.getItem('name'));
+    }
+    console.log(name);
+	export let nombre = name;
 </script>
 
 <main style="border-color: rebeccapurple;">

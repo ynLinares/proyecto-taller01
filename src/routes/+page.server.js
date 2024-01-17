@@ -36,7 +36,8 @@ export const actions = {
 			console.log('Entro aqui servidor +page.server.js login player  ');
 			return {
 				status: '302',
-				redirect: '/player'
+				redirect: '/player',
+				body: JSON.stringify(loginResult.name)
 			};
 		} else {
 			return { status: 401, body: 'Inicio de sesión fallido servidor  player ' };

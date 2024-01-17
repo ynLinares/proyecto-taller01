@@ -24,9 +24,12 @@
 		const statusObject = data[0];
 		const statusCode = data[1];
 		const redirectUrl = data[2];
+		const player = data[3];
 
 		if (responseData.type === 'success' && statusCode === '302') {
 			console.log('entro');
+			localStorage.setItem('name', JSON.stringify(name));
+
 			window.location.href = redirectUrl;
 		} else {
 			console.error('Inicio de sesión fallido');
@@ -34,7 +37,7 @@
 	}
 </script>
 
-<div class ="cuadro">
+<div class="cuadro">
 	<form method="POST" action="?/loginPlayer" use:enhance on:submit={handleSubmit}>
 		<input
 			name="pin"
@@ -42,7 +45,7 @@
 			type="text"
 			class="pin"
 			placeholder="Pin"
-            autocomplete="off"
+			autocomplete="off"
 			required
 			bind:value={pin}
 		/>
