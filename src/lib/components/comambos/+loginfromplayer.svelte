@@ -1,5 +1,4 @@
 <script>
-	import { enhance } from '$app/forms';
 
 	let name = '';
 	let pin = '';
@@ -36,9 +35,9 @@
 		}
 	}
 </script>
-
+<!-- method="POST" action="?/loginPlayer"  -->
 <div class="cuadro">
-	<form method="POST" action="?/loginPlayer" use:enhance on:submit={handleSubmit}>
+	<form on:submit={handleSubmit}>
 		<input
 			name="pin"
 			id="pin"

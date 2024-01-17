@@ -33,10 +33,12 @@ function addPlayer(name) {
 	// Agrega el nuevo jugador al arreglo de usuarios
 	users.push(newPlayer);
 
+	console.log('Adplayer');
 	// Devuelve el nuevo jugador
 	return newPlayer;
 }
 export function getAllUsers() {
+	console.log('getalluser');
 	return users;
 }
 
@@ -54,7 +56,7 @@ export function adminLogin(name, password) {
 	if (user.password !== password) {
 		throw new Error('Contraseña incorrecta');
 	}
-	console.log('data.js funciona ');
+	console.log('Adminlogin funciona ');
 	return true;
 }
 
@@ -66,6 +68,7 @@ export function validateAdminPin(pin) {
 	if (!user) {
 		return null;
 	}
+	console.log('validateAmdin pin');
 	// Devuelve el objeto del usuario
 	return user;
 }
@@ -82,8 +85,17 @@ export function playerLogin(adminPin, player) {
 	}
 
 	// Agrega el jugador a la base de datos
-	addPlayer(player);
+	// addPlayer(player);
 
 	console.log('playerLogin funciona');
 	return addPlayer(player);
+}
+
+export function getAllPlayers() {
+	// Filtra el arreglo para obtener solo los objetos de tipo "jugador"
+	const playerObjects = users.filter((player) => player.type === 'player');
+	console.log('getAllPlayer  funciona' + playerObjects);
+
+	// Devuelve los objetos de tipo "jugador"
+	return playerObjects;
 }

@@ -1,10 +1,13 @@
 <script>
-    let name="";
-	import Button from '../comambos/+button.svelte';
-    if (typeof window !== 'undefined') {
-        name = JSON.parse(window.localStorage.getItem('name'));
-    }
-    console.log(name);
+
+    import Button from '../comambos/+button.svelte';
+	let name = '';
+
+	if (typeof window !== 'undefined') {
+		name = JSON.parse(window.localStorage.getItem('name'));
+	}
+
+	console.log(name);
 	export let nombre = name;
 </script>
 
@@ -17,6 +20,6 @@
 		>
 			{nombre}
 		</h1>
-        	<Button nombre=" Listo" url="/player/loby"></Button>
+		<Button nombre=" Listo" url="/player/loby"></Button>
 	</div>
 </main>

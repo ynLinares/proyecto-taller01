@@ -2,7 +2,6 @@ import * as db from '$lib/server/data.js';
 
 export function load({ cookies }) {
 	let user = cookies.get('name');
-
 	return {
 		todos: db.getAllUsers(user)
 	};
@@ -10,13 +9,12 @@ export function load({ cookies }) {
 
 export const actions = {
 	login: async ({ request }) => {
-		console.log('Entro en el login');
+		console.log('Entro en el login admin');
 		const data = await request.formData();
-
 		const loginResult = db.adminLogin(data.get('name'), data.get('password'));
-		console.log(db.adminLogin(data.get('name'), data.get('password')));
+		console.log(loginResult);
 		if (loginResult) {
-			console.log('Entro aqui servidor +page.server.js');
+			console.log('Entro aqui servidor +page.server.js login admin ');
 			return {
 				status: '302',
 				redirect: '/teacher'
@@ -26,12 +24,11 @@ export const actions = {
 		}
 	},
 
-    loginPlayer: async ({ request }) => {
+	loginPlayer: async ({ request }) => {
 		console.log('Entro en el login player');
 		const data = await request.formData();
-
 		const loginResult = db.playerLogin(data.get('pin'), data.get('name'));
-		console.log(db.playerLogin(data.get('pin'), data.get('name')));
+		console.log(loginResult);
 		if (loginResult) {
 			console.log('Entro aqui servidor +page.server.js login player  ');
 			return {
