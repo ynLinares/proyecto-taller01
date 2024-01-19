@@ -3,6 +3,7 @@
 	import ImagePlayer from '../comambos/+imagePlayer.svelte';
 	import Imagep from '../comambos/+imagep.svelte';
 	import { io } from 'socket.io-client';
+	import { goto } from '$app/navigation';
 
 	let socket;
 
@@ -18,11 +19,21 @@
 
 	onMount(() => {
 		socket = io();
-		
 		socket.on('updatePlayers', (updatedPlayers) => {
         players = updatedPlayers;
+        socket.on('partidaplayer',(ok)=>{
+        goto("/player/juego")
+    });
     });
 	});
+    	let letter = ' letra desde crear quiz ';
+
+
+
+	function onButtonClick() {
+		socket.emit('movimiento', "letra enviada desde el jugador ");
+	};
+
 </script>
 
 <main style="width: 100%; border: 5px solid midnightblue; gap: 28px">
@@ -36,6 +47,8 @@
 		</div>
 		<div style="background-color: aliceblue; border: 3px solid midnightblue">
 			<h1>Listo</h1>
+            <button on:click={onButtonClick}>Enviar</button>
+
 		</div>
 	</div>
 </main>

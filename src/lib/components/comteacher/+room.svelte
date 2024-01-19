@@ -14,6 +14,9 @@
         players = updatedPlayers;
     });
 	});
+    	function onButtonClick() {
+		socket.emit('partida', true);
+	}
 </script>
 
 <div class="centro" style="flex-direction: row">
@@ -24,8 +27,7 @@
 	<img src="/ImagenesProyecto/2.png" alt="super chevere" width="10%" height="10%" />
 </div>
 <div class="centro" style="flex-direction: row">
-	<Button nombre="Iniciar" />
-	<Button nombre="Candado" />
+	<button on:click={onButtonClick}>Iniciar</button>
 </div>
 <div class="grid-container">
 	{#each players as name}
