@@ -1,6 +1,6 @@
 <script>
 	import { enhance } from '$app/forms';
-
+	import ImgeKahoot from './+imgeKahoot!.svelte';
 	let name = '';
 	let password = '';
 	let pin = '';
@@ -35,29 +35,32 @@
 	}
 </script>
 
-<div class="cuadro">
-	<form method="POST" action="?/login" use:enhance on:submit={handleSubmit}>
-		<input
-			name="name"
-			id="name"
-			type="text"
-			class="pin"
-			placeholder="Nombre"
-			autocomplete="off"
-			required
-			bind:value={name}
-		/>
-		<input
-			name="password"
-			id="password"
-			type="password"
-			class="pin"
-			placeholder="Password"
-			required
-			bind:value={password}
-		/>
-		<button class="botton" type="submit">Ingresar</button>
-	</form>
+<div class="centro">
+	<ImgeKahoot />
+	<div class="cuadro">
+		<form method="POST" action="?/login" use:enhance on:submit={handleSubmit}>
+			<input
+				name="name"
+				id="name"
+				type="text"
+				class="pin"
+				placeholder="Nombre"
+				autocomplete="off"
+				required
+				bind:value={name}
+			/>
+			<input
+				name="password"
+				id="password"
+				type="password"
+				class="pin"
+				placeholder="Password"
+				required
+				bind:value={password}
+			/>
+			<button class="botton" type="submit">Ingresar</button>
+		</form>
+	</div>
 </div>
 
 <style>

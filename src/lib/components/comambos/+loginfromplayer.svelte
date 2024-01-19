@@ -1,4 +1,5 @@
 <script>
+	import ImgeKahoot from './+imgeKahoot!.svelte';
 
 	let name = '';
 	let pin = '';
@@ -28,38 +29,40 @@
 		if (responseData.type === 'success' && statusCode === '302') {
 			console.log('entro');
 			localStorage.setItem('name', JSON.stringify(name));
-
 			window.location.href = redirectUrl;
 		} else {
 			console.error('Inicio de sesión fallido');
 		}
 	}
 </script>
-<!-- method="POST" action="?/loginPlayer"  -->
-<div class="cuadro">
-	<form on:submit={handleSubmit}>
-		<input
-			name="pin"
-			id="pin"
-			type="text"
-			class="pin"
-			placeholder="Pin"
-			autocomplete="off"
-			required
-			bind:value={pin}
-		/>
-		<input
-			name="name"
-			id="name"
-			type="text"
-			class="pin"
-			placeholder="Nombre de Usuario"
-			autocomplete="off"
-			required
-			bind:value={name}
-		/>
-		<button class="botton" type="submit">Ingresar</button>
-	</form>
+
+<div class="centro">
+	<ImgeKahoot />
+	<div class="cuadro">
+		<form on:submit={handleSubmit}>
+			<input
+				name="pin"
+				id="pin"
+				type="text"
+				class="pin"
+				placeholder="Pin"
+				autocomplete="off"
+				required
+				bind:value={pin}
+			/>
+			<input
+				name="name"
+				id="name"
+				type="text"
+				class="pin"
+				placeholder="Nombre de Usuario"
+				autocomplete="off"
+				required
+				bind:value={name}
+			/>
+			<button class="botton" type="submit">Ingresar</button>
+		</form>
+	</div>
 </div>
 
 <style>

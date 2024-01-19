@@ -1,5 +1,5 @@
 <script>
-	import Player from "$lib/components/complayer/+player.svelte";
+	import Loginfromplayer from '$lib/components/comambos/+loginfromplayer.svelte';
 </script>
 
-<Player />
+<Loginfromplayer />

@@ -1,9 +1,19 @@
 <script>
 	import ImagePlayer from '../comambos/+imagePlayer.svelte';
 	import Button from '../comambos/+button.svelte';
+	import { io } from 'socket.io-client';
+	import { onMount } from 'svelte';
 
 	export let pin = '########';
-	export let players = ['geraldine', 'jasinto', 'carmelo'];
+	let players = [];
+	let socket;
+	onMount(() => {
+		socket = io();
+
+		socket.on('updatePlayers', (updatedPlayers) => {
+        players = updatedPlayers;
+    });
+	});
 </script>
 
 <div class="centro" style="flex-direction: row">

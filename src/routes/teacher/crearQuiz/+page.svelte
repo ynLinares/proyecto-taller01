@@ -1,5 +1,5 @@
 <script>
-    import CrearQuiz from "$lib/components/comteacher/+crearQuiz.svelte";
+	import NewQuiz from "$lib/components/comteacher/+newQuiz.svelte";
 </script>
 
-<CrearQuiz />
+<NewQuiz />

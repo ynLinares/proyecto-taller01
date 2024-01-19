@@ -3,6 +3,8 @@ import { type ViteDevServer, defineConfig } from 'vite';
 
 import { Server } from 'socket.io';
 
+let players: any[] = [];
+
 const webSocketServer = {
 	name: 'webSocketServer',
 	configureServer(server: ViteDevServer) {
@@ -11,13 +13,12 @@ const webSocketServer = {
 		const io = new Server(server.httpServer);
 
 		io.on('connection', (socket) => {
-			socket.on('eventFromClient', (message) => {
-				console.log(message); // Debería imprimir 'A'
-				// Emitir el mensaje a todos los clientes conectados
-				io.emit('eventFromServer', message);
-			});
-			socket.on('anotherEventFromClient', (message) => {
-				console.log(message); // Manejar el evento aquí
+
+			socket.emit('updatePlayers', players);
+			
+			socket.on('newPlayer', (playername) => {
+				players.push(playername);
+				io.emit('updatePlayers', players);
 			});
 		});
 	}
