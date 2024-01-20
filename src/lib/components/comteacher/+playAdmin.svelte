@@ -4,37 +4,32 @@
 	import { io } from 'socket.io-client';
 	import ImagePlayer from '../comambos/+imagePlayer.svelte';
 
-	let images = [
-		'/ImagenesProyecto/Dead.jpeg',
-		'/ImagenesProyecto/Dead1.jpeg',
-		'/ImagenesProyecto/Dead2.jpeg',
-		'/ImagenesProyecto/Dead3.jpeg',
-		'/ImagenesProyecto/Dead4.jpeg',
-		'/ImagenesProyecto/Dead5.jpeg',
-		'/ImagenesProyecto/Dead6.jpeg'
-	];
+	let letter = ' letra desde crear quiz ';
 
-	let letter = '';
 	let socket = io();
-
-
-	export let palabra;
+	let palabra;
 	let players = [];
+	let src = "";
+
+	export let palabraocult = '';
 
 	onMount(() => {
-		socket = io();
-		socket.on('consultarPalabra', (palabraoculta) => {
-			palabra = Array(palabraoculta.length).fill('_').join(' ');
-		});
 
+        socket.on('imagen', (imagenactual)=>{
+            src=imagenactual
+        });
+		socket.on('consultarPalabra', (palabraoculta) => {
+			palabraocult = palabraoculta;
+			palabra = Array(palabraocult.length).fill('_').join(' ');
+		});
 		socket.on('updatePlayers', (updatedPlayers) => {
 			players = updatedPlayers;
 		});
+		socket.on('letterplayer', (letter) => {
+			const valor = palabraocult.includes(letter);
+			socket.emit('respuesta', valor);
+		});
 	});
-	const handleSubmit = () => {
-		// Enviar el formulario
-		socket.emit('movimiento', letter);
-	};
 </script>
 
 <Head titulo="Ahorcado"></Head>
@@ -43,14 +38,13 @@
 	<div>
 		<div class="cuadro centro">
 			<div>
-				<img src={images[2]} alt="error" />
+				<img {src} alt="error" />
+			</div>
+			<div>
+				{palabraocult}
 			</div>
 			<div>
 				{palabra}
-				<form on:submit={handleSubmit}>
-					<input type="text" bind:value={letter} />
-					<button type="submit">Enviar</button>
-				</form>
 			</div>
 		</div>
 		<div class="grid-container">

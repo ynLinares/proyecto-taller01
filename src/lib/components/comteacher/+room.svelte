@@ -1,6 +1,6 @@
 <script>
 	import ImagePlayer from '../comambos/+imagePlayer.svelte';
-	import Button from '../comambos/+button.svelte';
+    import { goto } from '$app/navigation';
 	import { io } from 'socket.io-client';
 	import { onMount } from 'svelte';
 
@@ -14,9 +14,12 @@
         players = updatedPlayers;
     });
 	});
+
     	function onButtonClick() {
 		socket.emit('partida', true);
+            goto("/teacher/play");
 	}
+
 </script>
 
 <div class="centro" style="flex-direction: row">
@@ -31,6 +34,6 @@
 </div>
 <div class="grid-container">
 	{#each players as name}
-		<ImagePlayer nombre={name} />
+		<ImagePlayer nombre={name.name} />
 	{/each}
 </div>
