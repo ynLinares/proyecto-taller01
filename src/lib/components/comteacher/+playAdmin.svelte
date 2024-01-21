@@ -3,21 +3,33 @@
 	import Head from '../comambos/+head.svelte';
 	import { io } from 'socket.io-client';
 	import ImagePlayer from '../comambos/+imagePlayer.svelte';
-
-	let letter = ' letra desde crear quiz ';
-
+	import { goto } from '$app/navigation';
 	let socket = io();
 	let palabra;
 	let players = [];
-	let src = "";
+	let num = 0;
+	const imagen = [
+		'/ImagenesProyecto/Dead.jpeg',
+		'/ImagenesProyecto/Dead1.jpeg',
+		'/ImagenesProyecto/Dead2.jpeg',
+		'/ImagenesProyecto/Dead3.jpeg',
+		'/ImagenesProyecto/Dead4.jpeg',
+		'/ImagenesProyecto/Dead5.jpeg',
+		'/ImagenesProyecto/Dead6.jpeg'
+	];
 
 	export let palabraocult = '';
-
+	$: imageUrl = imagen[num];
 	onMount(() => {
+		socket.on('over',(valor)=>{
+			if(!valor){
+				goto("/game");
+			}
+		});
+		socket.on('cont', (cont) => {
+			num = cont;
+		});
 
-        socket.on('imagen', (imagenactual)=>{
-            src=imagenactual
-        });
 		socket.on('consultarPalabra', (palabraoculta) => {
 			palabraocult = palabraoculta;
 			palabra = Array(palabraocult.length).fill('_').join(' ');
@@ -26,8 +38,28 @@
 			players = updatedPlayers;
 		});
 		socket.on('letterplayer', (letter) => {
-			const valor = palabraocult.includes(letter);
+			const indices = [];
+			// Convertir palabra en un array
+			let palabraArray = palabra.split(' ');
+
+			// Buscar la letra en palabraocult
+			for (let i = 0; i < palabraocult.length; i++) {
+				if (palabraocult[i] === letter) {
+					indices.push(i);
+				}
+			}
+
+			// Si la letra existe, reemplazarla en la misma posición en palabraArray
+			indices.forEach((index) => {
+				palabraArray[index] = letter;
+			});
+
+			// Convertir palabraArray de nuevo a una cadena
+			palabra = palabraArray.join(' ');
+
+			const valor = indices.length > 0;
 			socket.emit('respuesta', valor);
+			socket.emit('guardarpalabra', palabra);
 		});
 	});
 </script>
@@ -38,7 +70,7 @@
 	<div>
 		<div class="cuadro centro">
 			<div>
-				<img {src} alt="error" />
+				<img src={imageUrl} alt="error" />
 			</div>
 			<div>
 				{palabraocult}
@@ -49,7 +81,7 @@
 		</div>
 		<div class="grid-container">
 			{#each players as play}
-				<ImagePlayer nombre={play} />
+				<ImagePlayer nombre={play.name} />
 			{/each}
 		</div>
 	</div>

@@ -3,20 +3,11 @@ import { type ViteDevServer, defineConfig } from 'vite';
 
 import { Server } from 'socket.io';
 
-const players: { name: string; punto: number }[] = [];
+const players: { name: string }[] = [];
 let palabraoculta = ' ';
 let puntos = 0;
 let cont = 0;
-const imagen = [
-	'/ImagenesProyecto/Dead.jpeg',
-	'/ImagenesProyecto/Dead1.jpeg',
-	'/ImagenesProyecto/Dead2.jpeg',
-	'/ImagenesProyecto/Dead3.jpeg',
-	'/ImagenesProyecto/Dead4.jpeg',
-	'/ImagenesProyecto/Dead5.jpeg',
-	'/ImagenesProyecto/Dead6.jpeg'
-];
-let imagenactual = imagen[cont];
+
 const webSocketServer = {
 	name: 'webSocketServer',
 	configureServer(server: ViteDevServer) {
@@ -27,10 +18,10 @@ const webSocketServer = {
 		io.on('connection', (socket) => {
 			socket.emit('updatePlayers', players);
 			socket.emit('consultarPalabra', palabraoculta);
-			socket.emit('imagen', imagenactual);
+			socket.emit('cont',cont);
 
 			socket.on('newPlayer', (playername) => {
-				players.push({ name: playername, punto: 0 });
+				players.push({ name: playername });
 				io.emit('updatePlayers', players);
 			});
 
@@ -44,12 +35,15 @@ const webSocketServer = {
 				if (!valor) {
 					cont = cont + 1;
 					console.log(cont);
-					console.log('imagen ahora es ' + imagen[cont]);
+					if(cont>7){
+						io.emit('over', valor);
+					}
 				}
 				if (valor) {
 					puntos = puntos + 100;
 					console.log(' el valor de los puntos ' + puntos);
 				}
+				io.emit('cont',cont);
 			});
 
 			socket.on('partida', (ok) => {

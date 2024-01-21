@@ -3,8 +3,14 @@
 	import Head from '../comambos/+head.svelte';
 	import { io } from 'socket.io-client';
 	import ImagePlayer from '../comambos/+imagePlayer.svelte';
+	import { goto } from '$app/navigation';
+	let socket = io();
+	let palabra;
+	let players = [];
+	let num = 0;
+	let letter = "";
 
-	let images = [
+	let imagen = [
 		'/ImagenesProyecto/Dead.jpeg',
 		'/ImagenesProyecto/Dead1.jpeg',
 		'/ImagenesProyecto/Dead2.jpeg',
@@ -13,16 +19,18 @@
 		'/ImagenesProyecto/Dead5.jpeg',
 		'/ImagenesProyecto/Dead6.jpeg'
 	];
-
-	let letter = '';
-	let socket = io();
-
-
-	export let palabra;
-	let players = [];
+	$: imageUrl = imagen[num];
 
 	onMount(() => {
 		socket = io();
+		socket.on('over',(valor)=>{
+			if(!valor){
+				goto("/game");
+			}
+		});
+		socket.on('cont', (cont) => {
+			num = cont;
+		});
 		socket.on('consultarPalabra', (palabraoculta) => {
 			palabra = Array(palabraoculta.length).fill('_').join(' ');
 		});
@@ -30,6 +38,9 @@
 		socket.on('updatePlayers', (updatedPlayers) => {
 			players = updatedPlayers;
 		});
+		socket.on('palabra',(palabra)=>{
+			palabrao =palabra;
+		})
 	});
 	const handleSubmit = () => {
 		// Enviar el formulario
@@ -43,7 +54,7 @@
 	<div>
 		<div class="cuadro centro">
 			<div>
-				<img src={images[2]} alt="error" />
+				<img src={imageUrl} alt="error" />
 			</div>
 			<div>
 				{palabra}
@@ -55,7 +66,7 @@
 		</div>
 		<div class="grid-container">
 			{#each players as play}
-				<ImagePlayer nombre={play} />
+				<ImagePlayer nombre={play.name} />
 			{/each}
 		</div>
 	</div>

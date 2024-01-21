@@ -1,6 +1,6 @@
 <script>
 	import Imagep from '../comambos/+imagep.svelte';
-	export let evaluacion = '¡Respuesta correcta!';
+	export let evaluacion = '¡Ahorcado!';
 	export let puntos = 'Has obtenido 1000 puntos ';
 </script>
 
