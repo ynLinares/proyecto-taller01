@@ -2,8 +2,10 @@
 	import { onMount } from 'svelte';
 	import Imagep from '../comambos/+imagep.svelte';
 	import { io } from 'socket.io-client';
+	import { goto } from '$app/navigation';
 	export let evaluacion = '¡Ahorcado!';
 	export let puntaje = ' ';
+
 
 	let socket = io();
 	onMount(() => {
@@ -27,5 +29,5 @@
 	>
 		{evaluacion}
 	</h1>
-	<h2>{puntos}</h2>
+	<h2>Lograron {puntaje} Puntos </h2>
 </main>
