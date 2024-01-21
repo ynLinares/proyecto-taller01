@@ -27,8 +27,6 @@
 		});
 	});
 
-	let letter = ' letra desde crear quiz ';
-
 	function onButtonClick() {
 		socket.emit('movimiento', 'letra enviada desde el jugador ');
 	}

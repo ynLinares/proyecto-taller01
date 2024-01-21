@@ -5,10 +5,10 @@
 	import ImagePlayer from '../comambos/+imagePlayer.svelte';
 	import { goto } from '$app/navigation';
 	let socket = io();
-	let palabra;
+	let palabro;
 	let players = [];
 	let num = 0;
-	let letter = "";
+	let letter = '';
 
 	let imagen = [
 		'/ImagenesProyecto/Dead.jpeg',
@@ -19,28 +19,29 @@
 		'/ImagenesProyecto/Dead5.jpeg',
 		'/ImagenesProyecto/Dead6.jpeg'
 	];
+
 	$: imageUrl = imagen[num];
 
 	onMount(() => {
 		socket = io();
-		socket.on('over',(valor)=>{
-			if(!valor){
-				goto("/game");
+		socket.on('over', (valor) => {
+			if (!valor) {
+				goto('/game');
 			}
 		});
 		socket.on('cont', (cont) => {
 			num = cont;
 		});
 		socket.on('consultarPalabra', (palabraoculta) => {
-			palabra = Array(palabraoculta.length).fill('_').join(' ');
+			palabro = Array(palabraoculta.length).fill('_').join(' ');
 		});
 
 		socket.on('updatePlayers', (updatedPlayers) => {
 			players = updatedPlayers;
 		});
-		socket.on('palabra',(palabra)=>{
-			palabrao =palabra;
-		})
+		socket.on('guiones', (palabra) => {
+			palabro = palabra;
+		});
 	});
 	const handleSubmit = () => {
 		// Enviar el formulario
@@ -57,7 +58,7 @@
 				<img src={imageUrl} alt="error" />
 			</div>
 			<div>
-				{palabra}
+				{palabro}
 				<form on:submit={handleSubmit}>
 					<input type="text" bind:value={letter} />
 					<button type="submit">Enviar</button>

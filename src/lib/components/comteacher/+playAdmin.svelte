@@ -8,6 +8,7 @@
 	let palabra;
 	let players = [];
 	let num = 0;
+	export let palabraocult = ''; 
 	const imagen = [
 		'/ImagenesProyecto/Dead.jpeg',
 		'/ImagenesProyecto/Dead1.jpeg',
@@ -18,8 +19,9 @@
 		'/ImagenesProyecto/Dead6.jpeg'
 	];
 
-	export let palabraocult = '';
 	$: imageUrl = imagen[num];
+
+	
 	onMount(() => {
 		socket.on('over',(valor)=>{
 			if(!valor){

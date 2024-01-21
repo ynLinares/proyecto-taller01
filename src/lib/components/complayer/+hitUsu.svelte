@@ -1,16 +1,24 @@
 <script>
+	import { onMount } from 'svelte';
 	import Imagep from '../comambos/+imagep.svelte';
+	import { io } from 'socket.io-client';
 	export let evaluacion = '¡Ahorcado!';
-	export let puntos = 'Has obtenido 1000 puntos ';
+	export let puntaje = ' ';
+
+	let socket = io();
+	onMount(() => {
+		socket.on('puntos', (puntos) => {
+			puntaje = puntos;
+		});
+	});
 </script>
 
 <main class="centro" style="border-color: rebeccapurple;">
-	<div class="alinea">
+	<div class="centro">
 		<Imagep />
 	</div>
 	<h1
-		style=
-        "margin: 0px;
+		style="margin: 0px;
         font-size: 2.5rem;
         font-family: inherit;
         line-height: normal;

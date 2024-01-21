@@ -5,6 +5,7 @@ import { Server } from 'socket.io';
 
 const players: { name: string }[] = [];
 let palabraoculta = ' ';
+let palabra ='';
 let puntos = 0;
 let cont = 0;
 let admin ="";
@@ -22,6 +23,7 @@ const webSocketServer = {
 			socket.emit('consultarPalabra', palabraoculta);
 			socket.emit('cont',cont);
 			socket.emit('pin',pin);
+			socket.emit('puntos',puntos);
 
 			socket.on('admin',(newamid)=>{
 				admin=newamid;
@@ -42,7 +44,8 @@ const webSocketServer = {
 				if (!valor) {
 					cont = cont + 1;
 					console.log(cont);
-					if(cont>7){
+					if(cont>6){
+						cont=0;
 						io.emit('over', valor);
 					}
 				}
@@ -62,6 +65,7 @@ const webSocketServer = {
 				console.log('palabra oculta es  ' + palabra);
 				palabraoculta = palabra;
 				console.log(palabraoculta);
+				io.emit('guiones',palabraoculta);
 			});
 		});
 	}
