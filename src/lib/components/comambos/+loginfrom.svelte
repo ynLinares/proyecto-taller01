@@ -6,10 +6,12 @@
 	
 	// Componete IamgenKahoot 
 	import ImgeKahoot from './+imgeKahoot!.svelte';
+	import { io } from 'socket.io-client';
 
 	// Variables usados por el formulario  
 	let name = '';
 	let password = '';
+	let socket =io();
 
 	// Funcion asincrona 
 	// solicita una respuesta del servidor 
@@ -26,7 +28,7 @@
 			});
 
 			// Bandera para verificar response 
-			// console.log('Response:', response);
+			 console.log('Response:', response);
 			
 			const responseData = await response.json();
 			console.log('Response Data:', responseData);
@@ -40,8 +42,9 @@
 				const statusCode = data[1];
 				console.log(statusCode)
 				const redirectUrl = data[2];
+				const pin = data[3];
 				if (responseData.type === 'success' && statusCode === '302') {
-					console.log('entro');
+					socket.emit('admin',name);
 					window.location.href = redirectUrl;
 				} 
 				if(statusCode === "401"){
@@ -50,7 +53,6 @@
 			} else {
 				alert('Inicio de sesión fallido');
 			}
-
 	}
 </script>
 

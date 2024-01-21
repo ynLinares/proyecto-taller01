@@ -59,7 +59,7 @@ export function adminLogin(name, password) {
 		console.log('Contraseña incorrecta');
 		return false;
 	}
-	console.log('Adminlogin funciona ');
+	// Generar un PIN aleatorio de 4 dígitos
 	return true;
 }
 
@@ -101,4 +101,12 @@ export function getAllPlayers() {
 
 	// Devuelve los objetos de tipo "jugador"
 	return playerObjects;
+}
+
+export function getPin(admin){
+
+	const user = users.find((user) => user.name === admin);
+	const pin = user.pin;
+	return (pin);
+
 }

@@ -45,7 +45,7 @@ export const actions = {
 			console.log('Entro aqui servidor +page.server.js login admin ');
 			return {
 				status: '302',
-				redirect: '/teacher/crearQuiz'
+				redirect: '/teacher/crearQuiz',
 			};
 		} else {
 			console.log('fallido')

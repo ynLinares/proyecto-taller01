@@ -4,7 +4,7 @@
 	import { io } from 'socket.io-client';
 	import { onMount } from 'svelte';
 
-	export let pin = '########';
+	export let Pin = '########';
 	let players = [];
 	let socket;
 	onMount(() => {
@@ -12,7 +12,11 @@
 
 		socket.on('updatePlayers', (updatedPlayers) => {
         players = updatedPlayers;
+
     });
+	socket.on('pin',(pin)=>{
+		Pin=pin;
+	});
 	});
 
     	function onButtonClick() {
@@ -25,7 +29,7 @@
 <div class="centro" style="flex-direction: row">
 	<div class="cuadro" style="width: 30%">
 		<h2>Pin</h2>
-		<h1>{pin}</h1>
+		<h1>{Pin}</h1>
 	</div>
 	<img src="/ImagenesProyecto/2.png" alt="super chevere" width="10%" height="10%" />
 </div>

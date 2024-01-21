@@ -1,12 +1,14 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { type ViteDevServer, defineConfig } from 'vite';
-
+import * as db from './src/lib/server/data.js';
 import { Server } from 'socket.io';
 
 const players: { name: string }[] = [];
 let palabraoculta = ' ';
 let puntos = 0;
 let cont = 0;
+let admin ="";
+let pin ="";
 
 const webSocketServer = {
 	name: 'webSocketServer',
@@ -19,7 +21,12 @@ const webSocketServer = {
 			socket.emit('updatePlayers', players);
 			socket.emit('consultarPalabra', palabraoculta);
 			socket.emit('cont',cont);
+			socket.emit('pin',pin);
 
+			socket.on('admin',(newamid)=>{
+				admin=newamid;
+				pin=db.getPin(admin) as string;
+			});
 			socket.on('newPlayer', (playername) => {
 				players.push({ name: playername });
 				io.emit('updatePlayers', players);
