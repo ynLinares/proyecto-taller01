@@ -1,15 +1,25 @@
+<!-- Pagina principal 
+Los usuarios eligen si ser anfitrion o jugador  -->
 <script>
+	// Componete inicio
 	import Inicioo from '$lib/components/comambos/+inicioo.svelte';
-	import CrearQuiz from '$lib/components/comteacher/+crearQuiz.svelte';
 </script>
 
-<div>
-	<div
-		style="	display: flex;
+
+<div
+	style="	display: flex;
             justify-content: center;
-	        align-items: center;">
-		<Inicioo name="player" url="/player" comoyoquiera="mira que lindo" />
-		<Inicioo name="admin" url="/teacher" comoyoquiera="per mi ra que lindo " />
-	</div>
-    <!-- <CrearQuiz /> -->
+	        align-items: center;"
+>
+	<!-- Genera una imagen y un boton
+	direcciona a la pagina de cada uno   -->
+	
+	<Inicioo 
+		name="Jugador" 
+		url="/player" 
+		button="Adivina la palabra " />
+	<Inicioo 
+		name="Anfitrion" 
+		url="/teacher" 
+		button="Elijes la palabra" />
 </div>

@@ -1,44 +1,63 @@
+<!-- Comonete login 
+	 Contiene el from 
+	 y una imagen 
+	 -->
 <script>
-	import { enhance } from '$app/forms';
+	
+	// Componete IamgenKahoot 
 	import ImgeKahoot from './+imgeKahoot!.svelte';
+
+	// Variables usados por el formulario  
 	let name = '';
 	let password = '';
-	let pin = '';
 
+	// Funcion asincrona 
+	// solicita una respuesta del servidor 
+	// con em letodo post a la funcion /login 
+	// 
 	async function handleSubmit() {
-		const response = await fetch('?/login', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
-			body: new URLSearchParams({ name, password })
-		});
-		console.log('Response:', response);
-		const responseData = await response.json();
-		console.log('Response Data:', responseData);
 
-		// Parse the 'data' property as JSON
-		const data = JSON.parse(responseData.data);
-		console.log('Data:', data);
+			// Solicitud post 
+			// devuelve un objeto
+			const response = await fetch('?/login', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				body: new URLSearchParams({ name, password })
+			});
 
-		// Access the elements of the array
-		const statusObject = data[0];
-		const statusCode = data[1];
-		const redirectUrl = data[2];
+			// Bandera para verificar response 
+			// console.log('Response:', response);
+			
+			const responseData = await response.json();
+			console.log('Response Data:', responseData);
 
-		if (responseData.type === 'success' && statusCode === '302') {
-			console.log('entro');
-			window.location.href = redirectUrl;
-		} else {
-			console.error('Inicio de sesión fallido');
-		}
+			if (responseData.data) {
+				// Parse the 'data' property as JSON
+				const data = JSON.parse(responseData.data);
+				console.log('Data:', data);
+
+				// Access the elements of the array
+				const statusCode = data[1];
+				console.log(statusCode)
+				const redirectUrl = data[2];
+				if (responseData.type === 'success' && statusCode === '302') {
+					console.log('entro');
+					window.location.href = redirectUrl;
+				} 
+				if(statusCode === "401"){
+					alert('Inicio de sesión fallido');
+				}
+			} else {
+				alert('Inicio de sesión fallido');
+			}
+
 	}
 </script>
 
 <div class="centro">
 	<ImgeKahoot />
 	<div class="cuadro">
-		<form method="POST" action="?/login" use:enhance on:submit={handleSubmit}>
+		<form method="POST" action="?/login" on:submit={handleSubmit}>
 			<input
 				name="name"
 				id="name"

@@ -1,11 +1,46 @@
+// Servidor de teacher 
+
+//Carga de base de datos ficticia  
 import * as db from '$lib/server/data.js';
 
+// Actions 
+// aciones que usan los formularios 
+// en las metodos  POST  
+// usando action : "?login"
+
 export const actions = {
+	// Estas aciones se ejecutan del 
+	// aldo del servidor 
+	// evitando la manipualcion 
+	// delcliente 
+	// y permitiendo reutilizarlas 
+
+	// action login 
 	login: async ({ request }) => {
-		console.log('Entro en el login admin');
+		// Bandera 
+		// console.log('Entro en el login admin');
+
+		//Carga de la data desde el form 
 		const data = await request.formData();
+
+		// loginResult 
+		// consulta a la base de datos 
+		// es un booleano 
+		// db.adminlogin 
+		// verifia que le nombre 
+		// y la password del formulario 
+		// coincidan con un Admin en 
+		// la base de datos 
 		const loginResult = db.adminLogin(data.get('name'), data.get('password'));
-		console.log(loginResult);
+		
+		// Bandera que muestra loginResult 
+		// console.log(loginResult);
+
+		// Condicdional
+		// loginResult 
+		// regresa un objeto 
+		// con el estado y a donde redirigir 
+		
 		if (loginResult) {
 			console.log('Entro aqui servidor +page.server.js login admin ');
 			return {
@@ -13,24 +48,11 @@ export const actions = {
 				redirect: '/teacher/crearQuiz'
 			};
 		} else {
-			return { status: 401, body: 'Inicio de sesión fallido servidor ' };
+			console.log('fallido')
+			return {
+				status: '401',
+				body: 'Inicio de sesión fallido'
+			};
 		}
 	},
-
-	loginPlayer: async ({ request }) => {
-		console.log('Entro en el login player');
-		const data = await request.formData();
-		const loginResult = db.playerLogin(data.get('pin'), data.get('name'));
-		console.log(loginResult);
-		if (loginResult) {
-			console.log('Entro aqui servidor +page.server.js login player  ');
-			return {
-				status: '302',
-				redirect: '/player/usuario',
-				body: JSON.stringify(loginResult.name)
-			};
-		} else {
-			return { status: 401, body: 'Inicio de sesión fallido servidor  player ' };
-		}
-	}
 };

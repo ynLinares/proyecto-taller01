@@ -46,15 +46,18 @@ export function adminLogin(name, password) {
 	const user = users.find((user) => user.name === name);
 
 	if (!user) {
-		throw new Error('Usuario no encontrado' + JSON.stringify(name));
+		console.log('Usuario no encontrado' + JSON.stringify(name));
+		return false;
 	}
 
 	if (user.type !== 'admin') {
-		throw new Error('El usuario no es un administrador');
+		console.log('El usuario no es un administrador');
+		return false;
 	}
 
 	if (user.password !== password) {
-		throw new Error('Contraseña incorrecta');
+		console.log('Contraseña incorrecta');
+		return false;
 	}
 	console.log('Adminlogin funciona ');
 	return true;
