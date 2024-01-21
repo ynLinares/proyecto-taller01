@@ -21,5 +21,5 @@ Los usuarios eligen si ser anfitrion o jugador  -->
 	<Inicioo 
 		name="Anfitrion" 
 		url="/teacher" 
-		button="Elijes la palabra" />
+		button="Eliges la palabra" />
 </div>
