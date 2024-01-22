@@ -10,23 +10,26 @@ import * as db from './src/lib/server/data.js';
 // Importa la clase Server de 'socket.io' para crear un servidor WebSocket
 import { Server } from 'socket.io';
 
-// Inicializa un array vacío para almacenar los jugadores con un nombre 
+// Iniciliza un array vacío para almacenar los jugadores con un nombre 
 const players: { name: string }[] = [];
 
-// Inicializa una variable para almacenar la palabra oculta en el juego
+// Inicializ una variable para almacenar la palabra oculta en el juego
 let palabraoculta = ' ';
 
-// Inicializa una variable para almacenar los puntos en el juego
+// Incializa una variable para almacenar los puntos en el juego
 let puntos = 0;
 
-// Inicializa un contador para señalar el final del juego
+// Iniciliza un contador para señalar el final del juego
 let cont = 0;
 
-// Inicializa una variable para almacenar el administrador del juego
+// Inicialia una variable para almacenar el administrador del juego
 let admin ="";
 
 // Inicializa una variable para almacenar el pin del juego
 let pin ="";
+
+// Inicializa 
+let victoria=false;
 
 // Define un objeto para configurar el servidor WebSocket
 const webSocketServer = {
@@ -48,6 +51,7 @@ const webSocketServer = {
             socket.emit('cont',cont);
             socket.emit('pin',pin);
             socket.emit('puntos',puntos);
+            socket.emit('victoria',victoria);
 
             // Cuando el cliente envía el evento 'admin'
 			//  actualiza el administrador y el pin
@@ -120,6 +124,12 @@ const webSocketServer = {
                 palabraoculta = palabra;
                 console.log(palabraoculta);
                 io.emit('guiones',palabraoculta);
+                if (!palabraoculta.includes('_')) {
+                    console.log(!palabraoculta.includes('_'));
+                    victoria=true;
+                    console.log(victoria);
+                    io.emit('over',true);
+                }
             });
         });
     }

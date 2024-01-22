@@ -32,9 +32,12 @@
 	// Define una función que se ejecuta después de que el componente se monta en el DOM
 	onMount(() => {
 		// Define los manejadores de eventos de socket
-		socket.on('over',(valor)=>{
-			if(!valor){
-				goto("/game");
+		socket.on('over', (valor) => {
+			if (!valor) {
+				goto('/game');
+			}
+			if(valor){
+				goto('/game');
 			}
 		});
 		socket.on('cont', (cont) => {

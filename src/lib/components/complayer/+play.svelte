@@ -40,6 +40,9 @@
 			if (!valor) {
 				goto('/game');
 			}
+			if(valor){
+				goto('/game');
+			}
 		});
 		// Indica el contador de juagas 
 		socket.on('cont', (cont) => {

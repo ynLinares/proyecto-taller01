@@ -3,7 +3,7 @@
 	import Imagep from '../comambos/+imagep.svelte';
 	import { io } from 'socket.io-client';
 	import { goto } from '$app/navigation';
-	export let evaluacion = '¡Ahorcado!';
+	export let evaluacion ='';
 	export let puntaje = ' ';
 
 
@@ -11,6 +11,14 @@
 	onMount(() => {
 		socket.on('puntos', (puntos) => {
 			puntaje = puntos;
+		});
+		socket.on('victoria',(victoria)=>{
+			if(victoria){
+				evaluacion="Victoria ";
+			}
+			if(!victoria){
+				evaluacion="Ahorcado";
+			}
 		});
 	});
 </script>

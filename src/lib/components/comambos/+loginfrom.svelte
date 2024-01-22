@@ -58,6 +58,11 @@
 
 <div class="centro">
 	<ImgeKahoot />
+	<p>
+		Admin 
+		<br>
+		123
+	</p>
 	<div class="cuadro">
 		<form method="POST" action="?/login" on:submit={handleSubmit}>
 			<input
