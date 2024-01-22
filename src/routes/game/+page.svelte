@@ -1,5 +1,8 @@
 <script>
-	import HitUsu from "$lib/components/complayer/+hitUsu.svelte";
-
+	// Importa el componente Play desde la ruta especificada
+	import Play from '$lib/components/complayer/+play.svelte';
 </script>
-<HitUsu />
+
+<!-- Instancia del componente Play. -->
+
+<Play />

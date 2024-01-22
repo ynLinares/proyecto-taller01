@@ -1,12 +1,38 @@
-<!doctype html>
-<html lang="es-VE">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
-</html>
+<!doctype html> 
+<!-- Declara el tipo de documento como HTML5 -->
+
+<html lang="es-VE"> 
+	<!-- Abre la etiqueta html y
+		 establece el idioma de la 
+		 página a español de Venezuela -->
+
+    <head> 
+		<!-- Abre la etiqueta head, que contiene 
+		metadatos sobre el documento HTML -->
+
+        <meta charset="utf-8" /> 
+		<!-- Define la codificación de 
+			caracteres para el documento como UTF-8 -->
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+		<!-- Asegura que la página sea responsive, 
+			es decir, se vea bien en todos los tamaños de pantalla -->
+
+        %sveltekit.head% <!-- Inyecta los metadatos específicos 
+			de SvelteKit en el head del documento -->
+
+    </head> 
+
+    <body data-sveltekit-preload-data="hover"> 
+		<!-- Abre la etiqueta 
+		body y establece un atributo de datos 
+		personalizado para SvelteKit -->
+
+        <div style="display: contents">%sveltekit.body%</div> 
+		<!-- Inyecta el cuerpo de la aplicación SvelteKit en el documento. 
+			El div tiene un estilo CSS que hace que sus hijos se comporten
+			 como si fueran hijos directos del body -->
+
+    </body> 
+
+</html> 
