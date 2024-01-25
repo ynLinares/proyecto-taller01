@@ -13,7 +13,7 @@
 	let palabra;
 	let players = [];
 	let num = 0;
-	export let palabraocult = ''; 
+	export let palabraocult = '';
 
 	// Define un array de imágenes
 	const imagen = [
@@ -36,7 +36,7 @@
 			if (!valor) {
 				goto('/game');
 			}
-			if(valor){
+			if (valor) {
 				goto('/game');
 			}
 		});
@@ -71,19 +71,16 @@
 </script>
 
 <!-- Muestra el título del juego -->
-<Head titulo="Ahorcado"></Head>
 
-<!-- Muestra la imagen, la palabra oculta y la palabra actual -->
-<div style="display: flex;">
-	<div>
-		<div class="cuadro centro">
-			<div>
+	<Head titulo="Ahorcado"></Head>
+
+	<!-- Muestra la imagen, la palabra oculta y la palabra actual -->
+	<div style="display: flex;">
+		<div class="cuadro">
 				<img src={imageUrl} alt="error" />
-			</div>
 			<div>
 				{palabraocult}
-			</div>
-			<div>
+				<br />
 				{palabra}
 			</div>
 		</div>
@@ -94,4 +91,13 @@
 			{/each}
 		</div>
 	</div>
-</div>
+
+
+<style>
+.cuadro{
+display: flex;
+width: 100%;
+justify-content: space-between;
+}
+
+</style>
